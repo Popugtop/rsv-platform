@@ -12,7 +12,7 @@ const navLinks = [
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -21,9 +21,9 @@ export function Header() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = drawerOpen ? 'hidden' : ''
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [drawerOpen])
+  }, [menuOpen])
 
   return (
     <>
@@ -36,6 +36,7 @@ export function Header() {
           {/* Logo */}
           <NavLink
             to="/"
+            onClick={() => setMenuOpen(false)}
             className="font-heading font-extrabold text-base text-ink hover:text-accent transition-colors duration-200 flex items-center gap-1.5"
           >
             <span className="w-7 h-7 rounded-xl bg-accent flex items-center justify-center text-white text-xs font-heading font-extrabold">
@@ -62,69 +63,53 @@ export function Header() {
 
           {/* Mobile burger */}
           <button
-            onClick={() => setDrawerOpen(true)}
-            className="md:hidden p-2 -mr-1 rounded-xl text-ink-muted hover:text-ink hover:bg-accent-pale transition-colors"
-            aria-label="Открыть меню"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden relative z-50 p-2 -mr-1 rounded-xl text-ink-muted hover:text-ink hover:bg-accent-pale transition-colors"
+            aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
-            <Menu size={20} />
+            <span className={`absolute inset-0 flex items-center justify-center transition-all duration-200 ${menuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
+              <X size={20} />
+            </span>
+            <span className={`flex items-center justify-center transition-all duration-200 ${menuOpen ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}>
+              <Menu size={20} />
+            </span>
           </button>
         </div>
       </header>
 
-      {/* Mobile drawer backdrop */}
+      {/* Full-screen overlay menu */}
       <div
-        className={`fixed inset-0 z-50 transition-all duration-300 md:hidden ${
-          drawerOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        className={`fixed inset-0 z-30 flex flex-col items-center justify-center md:hidden
+                    bg-canvas/97 backdrop-blur-xl transition-all duration-300 ${
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div
-          className={`absolute inset-0 bg-ink/30 transition-opacity duration-300 ${
-            drawerOpen ? 'opacity-100' : 'opacity-0'
-          }`}
-          onClick={() => setDrawerOpen(false)}
-        />
-        {/* Drawer panel */}
-        <div
-          className={`absolute top-0 right-0 h-full w-72 bg-layer shadow-drawer
-                      flex flex-col transition-transform duration-300 ease-[cubic-bezier(.32,.72,0,1)] ${
-            drawerOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-        >
-          {/* Drawer header */}
-          <div className="flex items-center justify-between px-5 h-16 border-b border-border">
-            <span className="font-heading font-extrabold text-ink text-sm">Навигация</span>
-            <button
-              onClick={() => setDrawerOpen(false)}
-              className="p-1.5 rounded-xl text-ink-muted hover:text-ink hover:bg-canvas transition-colors"
-              aria-label="Закрыть"
-            >
-              <X size={18} />
-            </button>
-          </div>
-
-          {/* Drawer links */}
-          <nav className="flex flex-col gap-1 p-3 flex-1">
-            {navLinks.map(({ to, label }) => (
-              <NavLink
-                key={to}
-                to={to}
-                end={to === '/'}
-                onClick={() => setDrawerOpen(false)}
-                className={({ isActive }) =>
-                  isActive
-                    ? 'flex items-center gap-3 px-4 py-3 rounded-2xl bg-accent text-white font-body font-semibold text-sm'
-                    : 'flex items-center gap-3 px-4 py-3 rounded-2xl text-ink-muted hover:bg-raised font-body font-medium text-sm transition-colors'
+        <nav className="flex flex-col items-center gap-2 w-full px-8">
+          {navLinks.map(({ to, label }, i) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              onClick={() => setMenuOpen(false)}
+              style={{ transitionDelay: menuOpen ? `${i * 50}ms` : '0ms' }}
+              className={({ isActive }) => `
+                w-full text-center py-4 font-heading font-black text-2xl rounded-2xl
+                transition-all duration-300
+                ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+                ${isActive
+                  ? 'text-accent bg-accent-pale'
+                  : 'text-ink hover:text-accent hover:bg-raised'
                 }
-              >
-                {label}
-              </NavLink>
-            ))}
-          </nav>
+              `}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
 
-          <div className="px-5 pb-8">
-            <p className="text-xs text-ink-faint font-body">© 2026 РСВ Платформа</p>
-          </div>
-        </div>
+        <p className="absolute bottom-8 text-xs text-ink-faint font-body">
+          © 2026 РСВ Платформа
+        </p>
       </div>
     </>
   )

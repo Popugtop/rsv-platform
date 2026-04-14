@@ -108,7 +108,7 @@ export function HomePage() {
                 <p className="font-heading font-bold text-ink text-sm">
                   {CATEGORY_LABELS[key]}
                 </p>
-                <p className="text-xs text-ink-faint font-body mt-1 flex items-center gap-1 group-hover:text-accent transition-colors">
+                <p className="text-xs text-ink-muted font-body mt-1 flex items-center gap-1 group-hover:text-accent transition-colors duration-200">
                   Смотреть <ArrowRight size={10} />
                 </p>
               </button>

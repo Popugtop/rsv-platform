@@ -25,50 +25,50 @@ export function FilterTags({
 
   return (
     <div className="space-y-4">
-      {/* Audience row */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint mr-1">
+      {/* Audience */}
+      <div className="space-y-2">
+        <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint">
           Аудитория
-        </span>
-        {audiences.map((a) => (
-          <button
-            key={a}
-            onClick={() => onAudienceToggle(a)}
-            className={activeAudience.includes(a) ? 'chip-active' : 'chip-inactive'}
-          >
-            {AUDIENCE_LABELS[a]}
-          </button>
-        ))}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {audiences.map((a) => (
+            <button
+              key={a}
+              onClick={() => onAudienceToggle(a)}
+              className={activeAudience.includes(a) ? 'chip-active' : 'chip-inactive'}
+            >
+              {AUDIENCE_LABELS[a]}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Type row */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint mr-1">
+      {/* Type */}
+      <div className="space-y-2">
+        <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint">
           Тип
-        </span>
-        {types.map((t) => (
-          <button
-            key={t}
-            onClick={() => onTypeToggle(t)}
-            className={activeTypes.includes(t) ? 'chip-active' : 'chip-inactive'}
-          >
-            {TYPE_LABELS[t]}
-          </button>
-        ))}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {types.map((t) => (
+            <button
+              key={t}
+              onClick={() => onTypeToggle(t)}
+              className={activeTypes.includes(t) ? 'chip-active' : 'chip-inactive'}
+            >
+              {TYPE_LABELS[t]}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Controls row */}
-      <div className="flex items-center justify-between pt-1">
+      {/* Controls */}
+      <div className="flex items-center justify-between pt-1 border-t border-border">
         <p className="text-sm text-ink-muted font-body">
-          Найдено:{' '}
-          <span className="font-semibold text-ink">{resultCount}</span>
+          Найдено: <span className="font-semibold text-ink">{resultCount}</span>
         </p>
         {hasFilters && (
-          <button
-            onClick={onReset}
-            className="text-xs text-accent font-body font-medium hover:underline"
-          >
-            Сбросить фильтры
+          <button onClick={onReset} className="text-xs text-accent font-body font-medium hover:underline">
+            Сбросить
           </button>
         )}
       </div>

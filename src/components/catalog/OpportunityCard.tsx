@@ -21,7 +21,7 @@ export function OpportunityCard({ opportunity, onOpen }: OpportunityCardProps) {
   return (
     <article
       className="bg-layer border border-border rounded-card shadow-card hover:shadow-card-hover
-                 hover:-translate-y-1 hover:border-accent/40 transition-all duration-300 flex flex-col"
+                 hover:-translate-y-1 hover:border-accent/40 transition-all duration-300 flex flex-col overflow-hidden"
     >
       {/* Colored top bar */}
       <div className={`h-1.5 w-full flex-shrink-0 rounded-t-card ${TYPE_BAR[type]}`} />

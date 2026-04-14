@@ -15,6 +15,11 @@ export function KnowledgePage() {
     )
   }, [search])
 
+  // Split into two columns for desktop
+  const mid = Math.ceil(filtered.length / 2)
+  const col1 = filtered.slice(0, mid)
+  const col2 = filtered.slice(mid)
+
   return (
     <div className="page-enter">
       <Section className="pt-24 pb-16 px-5">
@@ -28,31 +33,35 @@ export function KnowledgePage() {
             </p>
           </div>
 
-          <div className="max-w-lg mb-4">
-            <SearchBar
-              value={search}
-              onChange={setSearch}
-              placeholder="Найти термин..."
-            />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+            <div className="flex-1 max-w-md">
+              <SearchBar value={search} onChange={setSearch} placeholder="Найти термин..." />
+            </div>
+            <p className="text-sm text-ink-muted font-body whitespace-nowrap">
+              Найдено: <span className="font-semibold text-ink">{filtered.length}</span> из {terms.length}
+            </p>
           </div>
 
-          <p className="text-sm text-ink-muted font-body mb-6">
-            Найдено:{' '}
-            <span className="font-semibold text-ink">{filtered.length}</span>
-            {' '}из {terms.length}
-          </p>
-
-          <div className="max-w-2xl space-y-2.5">
-            {filtered.length > 0 ? (
-              filtered.map((term, idx) => (
-                <TermCard key={term.id} term={term} index={idx + 1} />
-              ))
-            ) : (
-              <p className="text-sm text-ink-faint font-body py-6">
-                Термин не найден. Попробуйте другой запрос.
-              </p>
-            )}
-          </div>
+          {filtered.length > 0 ? (
+            <div className="grid lg:grid-cols-2 gap-x-5 gap-y-2.5 items-start">
+              {/* Column 1 */}
+              <div className="space-y-2.5">
+                {col1.map((term, idx) => (
+                  <TermCard key={term.id} term={term} index={idx + 1} />
+                ))}
+              </div>
+              {/* Column 2 */}
+              <div className="space-y-2.5">
+                {col2.map((term, idx) => (
+                  <TermCard key={term.id} term={term} index={mid + idx + 1} />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-ink-faint font-body py-6">
+              Термин не найден. Попробуйте другой запрос.
+            </p>
+          )}
         </div>
       </Section>
     </div>
