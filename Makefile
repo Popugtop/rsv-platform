@@ -11,7 +11,7 @@ build:
 	npm run build
 
 docker-build:
-	docker build -t $(IMAGE_NAME) .
+	DOCKER_BUILDKIT=1 docker build -t $(IMAGE_NAME) .
 
 docker-run:
 	docker run -d --name $(CONTAINER_NAME) -p $(PORT):80 --restart unless-stopped $(IMAGE_NAME)
