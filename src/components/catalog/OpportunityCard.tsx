@@ -61,7 +61,7 @@ export function OpportunityCard({ opportunity, onOpen }: OpportunityCardProps) {
 
         {/* Footer */}
         <div className="flex items-center justify-between pt-1 border-t border-border mt-1">
-          <p className="text-xs text-ink-faint font-body truncate mr-2">
+          <p className="text-xs text-ink-muted font-body truncate mr-2">
             {organizer}
           </p>
           <button

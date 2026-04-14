@@ -102,7 +102,7 @@ export function CatalogPage() {
             ) : (
               <div className="py-20 text-center bg-layer rounded-card border border-border">
                 <p className="font-heading font-bold text-xl text-ink-muted mb-2">Ничего не найдено</p>
-                <p className="text-sm text-ink-faint font-body mb-5">
+                <p className="text-sm text-ink-muted font-body mb-5">
                   Попробуйте изменить запрос или сбросить фильтры
                 </p>
                 <button onClick={resetFilters} className="btn-ghost">

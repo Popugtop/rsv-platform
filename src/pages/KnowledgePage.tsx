@@ -58,7 +58,7 @@ export function KnowledgePage() {
               </div>
             </div>
           ) : (
-            <p className="text-sm text-ink-faint font-body py-6">
+            <p className="text-sm text-ink-muted font-body py-6">
               Термин не найден. Попробуйте другой запрос.
             </p>
           )}

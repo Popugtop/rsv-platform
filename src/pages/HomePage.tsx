@@ -81,7 +81,7 @@ export function HomePage() {
                 </div>
                 <div>
                   <p className="font-heading font-black text-xl text-ink leading-none">{value}</p>
-                  <p className="text-xs text-ink-faint font-body mt-0.5">{label}</p>
+                  <p className="text-xs text-ink-muted font-body mt-0.5">{label}</p>
                 </div>
               </div>
             ))}

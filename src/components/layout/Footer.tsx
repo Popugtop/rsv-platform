@@ -26,7 +26,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint mb-4">
+            <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-muted mb-4">
               Разделы
             </p>
             <ul className="space-y-2">
@@ -44,7 +44,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint mb-4">
+            <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-muted mb-4">
               Масштаб
             </p>
             <ul className="space-y-1.5 text-sm text-ink-muted">

@@ -44,7 +44,7 @@ export function Modal({ opportunity, onClose }: ModalProps) {
       />
 
       {/* Panel */}
-      <div className="relative w-full sm:max-w-lg bg-layer border border-border rounded-t-3xl sm:rounded-3xl shadow-2xl
+      <div className="relative w-full sm:max-w-lg bg-layer border border-border rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden
                       animate-[slideUp_0.3s_ease_both] sm:animate-[fadeScale_0.25s_ease_both]">
         {/* Color bar */}
         <div className={`h-1.5 w-full rounded-t-3xl ${TYPE_BAR[opportunity.type]}`} />

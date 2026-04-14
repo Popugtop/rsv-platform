@@ -27,7 +27,7 @@ export function FilterTags({
     <div className="space-y-4">
       {/* Audience */}
       <div className="space-y-2">
-        <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint">
+        <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-muted">
           Аудитория
         </p>
         <div className="flex flex-wrap gap-2">
@@ -45,7 +45,7 @@ export function FilterTags({
 
       {/* Type */}
       <div className="space-y-2">
-        <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-faint">
+        <p className="text-xs font-body font-semibold uppercase tracking-widest text-ink-muted">
           Тип
         </p>
         <div className="flex flex-wrap gap-2">
