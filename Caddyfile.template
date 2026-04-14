@@ -1,0 +1,7 @@
+# Вставить этот блок в основной Caddyfile
+# Заменить project.popugtop.dev на нужный домен
+
+project.popugtop.dev {
+    reverse_proxy localhost:3080
+    encode gzip zstd
+}
