@@ -170,4 +170,5 @@ export const opportunities: Opportunity[] = [
     category: 'science',
     website: 'https://mendeleev.org',
   },
+
 ]
