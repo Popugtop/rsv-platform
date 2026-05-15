@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { useInView } from '../../hooks/useInView'
 
 interface SectionProps {
   id?: string
@@ -8,14 +7,8 @@ interface SectionProps {
 }
 
 export function Section({ id, children, className = '' }: SectionProps) {
-  const [ref, inView] = useInView<HTMLElement>()
-
   return (
-    <section
-      id={id}
-      ref={ref}
-      className={`section-fade ${inView ? 'in-view' : ''} ${className}`}
-    >
+    <section id={id} className={className}>
       {children}
     </section>
   )
