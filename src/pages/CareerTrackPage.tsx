@@ -213,16 +213,16 @@ export function CareerTrackPage() {
 
                     {/* Card */}
                     <div className={`
-                      flex-1 bg-layer rounded-card shadow-card p-5 border transition-all duration-300
+                      flex-1 min-w-0 bg-layer rounded-card shadow-card p-5 border transition-all duration-300
                       ${isMissed
                         ? 'border-border opacity-55'
                         : `${TYPE_BORDER[opp.type]} hover:shadow-card-hover hover:-translate-y-0.5`
                       }
                     `}>
                       {/* Status badge + timing */}
-                      <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mb-3">
                         <StatusBadge step={step} />
-                        <span className="flex items-center gap-1 text-xs text-ink-faint font-body flex-shrink-0">
+                        <span className="flex items-center gap-1 text-xs text-ink-faint font-body ml-auto">
                           <Clock size={11} />
                           {step.timing}
                         </span>
@@ -264,8 +264,8 @@ export function CareerTrackPage() {
                       </div>
 
                       {/* Footer */}
-                      <div className="flex items-center justify-between pt-3 border-t border-border">
-                        <p className="text-xs text-ink-faint font-body truncate mr-3">
+                      <div className="flex items-center justify-between pt-3 border-t border-border gap-2">
+                        <p className="text-xs text-ink-faint font-body truncate min-w-0">
                           {opp.organizer}
                         </p>
                         <button

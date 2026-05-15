@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { LogoIcon } from '../ui/LogoIcon'
 
 const navLinks = [
   { to: '/',          label: 'Главная'   },
@@ -15,9 +16,7 @@ export function Footer() {
         <div className="grid sm:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-1.5 mb-3">
-              <span className="w-7 h-7 rounded-xl bg-accent flex items-center justify-center text-white text-xs font-heading font-extrabold">
-                Р
-              </span>
+              <LogoIcon size={28} />
               <span className="font-heading font-extrabold text-ink text-sm">РСВ Платформа</span>
             </div>
             <p className="text-sm text-ink-muted leading-relaxed">
