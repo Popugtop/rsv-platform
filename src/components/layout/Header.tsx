@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { LogoIcon } from '../ui/LogoIcon'
 
 const navLinks = [
   { to: '/',          label: 'Главная'  },
@@ -40,9 +41,7 @@ export function Header() {
             onClick={() => setMenuOpen(false)}
             className="font-heading font-extrabold text-base text-ink hover:text-accent transition-colors duration-200 flex items-center gap-1.5"
           >
-            <span className="w-7 h-7 rounded-xl bg-accent flex items-center justify-center text-white text-xs font-heading font-extrabold">
-              Р
-            </span>
+            <LogoIcon size={28} />
             РСВ Платформа
           </NavLink>
 
