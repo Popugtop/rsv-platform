@@ -61,6 +61,13 @@ function useChecklist(opportunityId: number, stepCount: number) {
 
 export function Modal({ opportunity, onClose }: ModalProps) {
   const [guideOpen, setGuideOpen] = useState(false)
+  const [prevOppId, setPrevOppId] = useState<number | null>(null)
+
+  // Reset accordion synchronously during render when opportunity changes — no flash
+  if (opportunity?.id !== prevOppId) {
+    setPrevOppId(opportunity?.id ?? null)
+    if (guideOpen) setGuideOpen(false)
+  }
 
   const guide = opportunity ? applicationGuides[opportunity.id] : null
   const { checked, toggle, reset, progress } = useChecklist(
@@ -70,7 +77,6 @@ export function Modal({ opportunity, onClose }: ModalProps) {
 
   useEffect(() => {
     if (!opportunity) return
-    setGuideOpen(false)
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
