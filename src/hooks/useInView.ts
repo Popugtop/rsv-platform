@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 interface UseInViewOptions {
   threshold?: number
@@ -12,17 +12,21 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T>(null)
   const [inView, setInView] = useState(false)
 
-  useEffect(() => {
+  // useLayoutEffect fires before the browser paints — if the element is already
+  // in the viewport, we set inView synchronously so section-fade never shows
+  // opacity:0 to the user (fixes hard-refresh blank page bug).
+  useLayoutEffect(() => {
     const element = ref.current
     if (!element) return
-
-    // On hard refresh the element may already be in the viewport before the
-    // observer fires — check synchronously so section-fade resolves immediately.
     const rect = element.getBoundingClientRect()
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       setInView(true)
-      return
     }
+  }, [])
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
