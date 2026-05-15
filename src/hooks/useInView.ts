@@ -16,6 +16,14 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
     const element = ref.current
     if (!element) return
 
+    // On hard refresh the element may already be in the viewport before the
+    // observer fires — check synchronously so section-fade resolves immediately.
+    const rect = element.getBoundingClientRect()
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setInView(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
