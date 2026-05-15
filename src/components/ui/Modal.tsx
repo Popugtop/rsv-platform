@@ -89,7 +89,7 @@ export function Modal({ opportunity, onClose }: ModalProps) {
       aria-modal="true"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-ink/65 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} />
 
       {/* Panel */}
       <div className="relative w-full sm:max-w-lg bg-layer border border-border rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden animate-[slideUp_0.3s_ease_both] sm:animate-[fadeScale_0.25s_ease_both]">

@@ -51,15 +51,11 @@ export function KnowledgePage() {
 
           {/* Terms list */}
           {filtered.length > 0 ? (
-            <div className="space-y-px">
-              {filtered.map((term, index) => (
+            <div className="space-y-4">
+              {filtered.map((term) => (
                 <article
                   key={term.id}
                   className="group relative bg-layer border border-border rounded-card p-6 sm:p-8 hover:border-accent/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover"
-                  style={{
-                    animation: 'pageIn 0.4s ease both',
-                    animationDelay: `${index * 55}ms`,
-                  }}
                 >
                   {/* Index + name row */}
                   <div className="flex items-baseline gap-4 mb-4">
