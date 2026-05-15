@@ -6,6 +6,7 @@ import { CatalogPage } from './pages/CatalogPage'
 import { KnowledgePage } from './pages/KnowledgePage'
 import { LinksPage } from './pages/LinksPage'
 import { AboutPage } from './pages/AboutPage'
+import { CareerTrackPage } from './pages/CareerTrackPage'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/knowledge" element={<KnowledgePage />} />
             <Route path="/links"     element={<LinksPage />}     />
             <Route path="/about"     element={<AboutPage />}     />
+            <Route path="/track"     element={<CareerTrackPage />} />
           </Routes>
         </main>
         <Footer />

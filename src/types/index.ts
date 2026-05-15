@@ -58,6 +58,19 @@ export const TYPE_COLORS: Record<OpportunityType, string> = {
   forum:      'bg-blue-950/70 text-blue-400',
 };
 
+export interface ApplicationStep {
+  title: string
+  description?: string
+}
+
+export interface ApplicationGuide {
+  deadline: string
+  duration: string
+  steps: ApplicationStep[]
+  documents: string[]
+  tips: string[]
+}
+
 export const AUDIENCE_COLORS: Record<AudienceTag, string> = {
   school:     'bg-lime-950/70 text-lime-400',
   student:    'bg-cyan-950/70 text-cyan-400',
